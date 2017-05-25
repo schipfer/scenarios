@@ -1,0 +1,21 @@
+######################## BioChainS #######################################
+###### Biomass-to-end-use simulation tool ################################
+# Authors: Fabian Schipfer & Lukas Kranzl
+# Version 15.12.2016
+# Contact: schipfer@eeg.tuwien.ac.at
+
+This tool is programmed to simplify the comparative economic assessment of supply chains based on various densified bioenergy carrier.
+In order to run the tool you need the R-Software, additional packages are included in code and will be downloaded automatically.
+Unpack the folder, 
+
+How-to-run:
+
+.) BioChainS_Input.xlsx contains all input parameter. Structure of the input data sheets must stay unchanged but data can be modified and/or extended.
+.) Open the R-Software and load BioChainS_exe.R 
+.) Enter your working directory on the top and execute all lines
+.) This will run the various files and produce an output folder with a date-stamp and all graphs & tables as found in the paper
+.) Additional: Modify input files (in xlsx) and sensitivities (in BioChainS_calc.R)
+.) Additional: Create knowledge, have fun & send us feed-back 
+
+
+Sincerly
