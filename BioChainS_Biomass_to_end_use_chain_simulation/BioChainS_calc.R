@@ -68,7 +68,7 @@ for(i in 1:3){ #densification technologies
     drying<-((MCdifference)*2.9*1000)/3.6 #kWh/t_in oder out? u. eigentlich MC anforderung!
     drying<-if(i==1){drying}else{0}
     CAPEX<-De[De$ID==de&De$CD=="INV",]$ave[1]*INVvar*CRF[i]*10^6 #Euro/year incl. Taxes, Financing (loan iterest), insurance, depreciation
-    opex<-De[De$ID==de&De$CD=="var",]$ave[1]+drying*0.02312/NCV_spec #Euro/GJ_out gas costs 23euro/MWh (with 40 - only on pelletisation impact)      
+    opex<-De[De$ID==de&De$CD=="var",]$ave[1]+drying*0.02479/NCV_spec #Euro_2017/GJ_out gas costs 25euro/MWh      
     capex<-function(size){(CAPEX*(size/De[De$ID==de&De$CD=="refsize",]$ave[1])^SCL[i])}
     
     # carrier cost without biomass cost at densification plant gate and without variable and general costs   
@@ -124,3 +124,24 @@ euDEL<-t(sapply(delC,rowSums)[,c(2:4,6:8)])
 
 
 euLIST<-list("euDEL"=euDEL,"euRES"=euRES,"euCOF"=euCOF,"euFTR"=euFTR)
+
+##Numbers in Paper
+#Section 3.1
+#resm
+#colSums(resm[3:4,])/colSums(resm[1:4,]) #Shares of densification costs
+#resm_delvar[2,]/resm[2,] #Truck vs. Tractor
+#colSums(resm[1:4,4:6])/colSums(resm[1:4,1:3])
+#Section 3.2
+#delC$WtT[1,2]*20.5 #lowest transport costs in eur/t
+#delC$StP[6,2]*15.2 #highest transport costs in eur/t
+#c(delC$S[1,3],delC$StP[1,3],delC$StT[1,3],delC$StO[1,3])
+#Section 3.3
+#euLIST$euCOF[5,5:6]-euLIST$euCOF[4,5:6]
+#euLIST$euFTR[5,5:6]-euLIST$euFTR[4,5:6]
+#euLIST$euFTR[2,c(1,6)]-euLIST$euFTR[1,c(1,6)]
+#euLIST$euRES[2,c(1,6)]-euLIST$euRES[3,c(1,6)]
+#euLIST$euRES[3,1]-euLIST$euRES[2,1] #StT-StO
+#euLIST$euCOF[c(1,2),1]-euLIST$euCOF[c(4,5),1]
+#euLIST$euCOF[c(1,2),6]-euLIST$euCOF[c(4,5),6]
+#euLIST$euCOF[3,1]-euLIST$euCOF[6,1] #WtO - StO
+#euLIST$euCOF[5,c(1,6)]-euLIST$euCOF[4,c(1,6)]

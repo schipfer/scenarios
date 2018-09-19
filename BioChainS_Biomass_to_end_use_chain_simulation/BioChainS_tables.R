@@ -75,7 +75,7 @@ delLIST<-list(delC_STOREu,delC_DISTu,delC_HANDu)
 
 distDF<-data.frame(Tech.=c("StP","StT","StO","WtP","WtT","WtO"),rep(0,6),rep(0,6),
                    rep(0,6),rep(0,6))
-names(distDF)<-c("Tech.","Base [\u20ac/GJ]","Store+80d","Dis.CostÂ±50%","Hand.CostÂ±50%")
+names(distDF)<-c("Tech.","Base [\u20ac/GJ]","Store+80d","Dis.Cost±50%","Hand.Cost±50%")
 distDF[,2]<-paste(round(matrix(unlist(lapply(delC,rowSums)[c(2:4,6:8)]),ncol=6,byrow=TRUE)[,1],1),"|",
                   round(matrix(unlist(lapply(delC,rowSums)[c(2:4,6:8)]),ncol=6,byrow=TRUE)[,6],1))
 
@@ -83,7 +83,7 @@ for(i in 1:6){
   distDF[i,3]<-paste("+",round((sensXfun(delC_STOREu)[i,1]-1)*100,1),"%|+",round((sensXfun(delC_STOREu)[i,2]-1)*100,1),"%",sep="")
   for(l in 2:3){
     delC_sens<-delLIST[[l]]
-    distDF[i,2+l]<-paste("Â±",round((sensXfun(delC_sens)[i,1]-1)*100,1),"%|Â±",round((sensXfun(delC_sens)[i,2]-1)*100,1),"%",sep="")
+    distDF[i,2+l]<-paste("±",round((sensXfun(delC_sens)[i,1]-1)*100,1),"%|±",round((sensXfun(delC_sens)[i,2]-1)*100,1),"%",sep="")
   }
 }
 write.xlsx(distDF,

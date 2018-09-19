@@ -6,9 +6,9 @@
 #
 # Version: 1.0
 #
-# Changed on: 23-April-2017 by (FS)
-#         preparation for submission in Biomass and Bioenergy: documentation updated; 
-# Run on: RStudio Version 0.98.1049 with R version 3.1.1 (2014-07-10)
+# Changed on: 19-September-2018 by (FS)
+#         preparation for submission in Bioresource Technology: documentation updated; 
+# Run on: RStudio Version 1.1.383 with R version 3.4.2 (2017-09-28)
 #############################################################################################
 #
 # All calculations and graphics presented in manuscript
@@ -21,11 +21,12 @@
 # other files:           none
 # Problems:              none
 #############################################################################################
+rm(list = ls())
 
+pfad<-"~/Submissions/Densification/BioChainS_Biomass_to_end_use_chain_simulation/" ## set your working directory here !!
 
-pfad<-"~/BioChainS/" ## set your working directory here !!
-
-source("BioChainS_header.R")
+source("BioChainS_header.R") #necessary packages are loaded here - manipulations could be required in this file, 
+#depending on wether you have the packages installed or not and the correct path to your win-library (if you´re using R-Studio manually load one package to see your path)
 
 source("BioChainS_calc.R")
 

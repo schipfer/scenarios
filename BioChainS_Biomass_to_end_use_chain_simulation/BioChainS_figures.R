@@ -3,7 +3,7 @@
 resm2<-matrix(nrow=3,ncol=6,0)
 rownames(resm2)<-c("Cost [\u20ac/GJ]","Size [kt/a]","Supply [km]")
 colnames(resm2)<-c("WtP","StP","WtT","StT","WtO","StO")
-resm2[1,]<-round(colSums(resm[1:4,c(4,1,5,2,6,3)]),1)
+resm2[1,]<-format(round(colSums(resm[1:4,c(4,1,5,2,6,3)]),1),nsmall=1)
 resm2[2,]<-round(resm[5,c(4,1,5,2,6,3)])
 resm2[3,]<-round(resm[6,c(4,1,5,2,6,3)])
 
@@ -20,16 +20,16 @@ barplot(resm[1:4,c(4,1,5,2,6,3)],yaxt="n",xaxt="n",space=c(rep(c(1,0.5),3)),
 axis(2,at=seq(0,16,2),cex.axis=1.5)
 legend("right",rev(rownames(resm)[1:4]),col=rev(frbn),bty="n",cex=2,pch=15,bg="white",pt.bg=rev(frbn),
        title="Cost shares")
-title(ylab="              dBEC production costs [\u20ac 2014/GJ_dBEC]",cex.lab=1.5)
+title(ylab="              dBEC production costs [\u20ac 2017/GJ_dBEC]",cex.lab=1.5)
 
-addtable2plot(0.6 ,-5,resm2,bty="o",display.rownames=FALSE,hlines=TRUE,
+addtable2plot(1.2 ,-5,resm2,bty="o",display.rownames=FALSE,hlines=TRUE,
               vlines=TRUE,xpad=1,cex=1.85)
 
 text(11,-2.5,rownames(resm2)[1],cex=1.5,adj=0)
 text(11,-3.5,rownames(resm2)[2],cex=1.5,adj=0)
 text(11,-4.5,rownames(resm2)[3],cex=1.5,adj=0)
 
-abline(v=c(4.04,7.41),lty=3)
+abline(v=c(4.18,7.2),lty=3)
 
 dev.off()
 
@@ -102,7 +102,7 @@ par(mfrow=c(2,2),oma=c(2,2,2,4))
 ueber<-c("bioenergy carrier delivery","residential heating","electricity production","Fischer Tropsch diesel")
 newplot<-c(T,F,F,F)
 plot(1, type="n", axes=F, xlab="", ylab="",xlim=c(0.5,6.5))
-mtext("Energy deployment costs [\u20ac2014/GJ]         ",side=2,line=3,cex=2,adj=1)
+mtext("Energy deployment costs [\u20ac2017/GJ]         ",side=2,line=3,cex=2,adj=1)
 for(e in 1:4){
   par(new=newplot[e])
   scen<-dim(RDPs)[1]
@@ -118,9 +118,10 @@ for(e in 1:4){
   }
   
   axis(1,at=1:scen,rownames(euLIST[[e]]),lwd=2,cex.axis=1.8) 
-  abline(h=euREF[e],col="red")
-  abline(h=c(0,40.5,0,19.6)[e],col="red",lty=2)
-  abline(h=c(0,29.3,0,15.5)[e],col="red",lty=3)
+  #abline(h=euREF[e],col="red")
+  abline(h=c(0,36.9,7.7,12.7)[e],col="red",lty=2) #min
+  abline(h=c(0,25.2,11.5,14.1)[e],col="red") #ave
+  abline(h=c(0,19.6,19.8,14.9)[e],col="red",lty=3) #max
 }
 
 dev.off()

@@ -3,12 +3,14 @@
 Inputdaten<-"BioChainS_Input.xlsx"
 setwd(pfad)
 
-library("xlsx", lib.loc="~/R/win-library/3.1")
+library("xlsx", lib.loc="~/R/win-library/3.4") #This package needs Java installed for the correct version of your R (32 or 64 bit)
+#check version()
+#https://www.java.com/en/download/manual.jsp
 library(plotrix)
-library("ggplot2", lib.loc="~/R/win-library/3.1")
-library("gplots", lib.loc="~/R/win-library/3.1")
+library("ggplot2", lib.loc="~/R/win-library/3.4")
+library("gplots", lib.loc="~/R/win-library/3.4")
 
-library("gridExtra", lib.loc="~/R/win-library/3.1")
+library("gridExtra", lib.loc="~/R/win-library/3.4")
 library(grid)
 library(gtable)
 ttx<-ttheme_minimal()
